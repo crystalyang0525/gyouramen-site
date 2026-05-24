@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GYOU RAMEN – Authentic Japanese Ramen in Toronto</title>
+<meta name="description" content="GYOU RAMEN serves authentic Japanese ramen in Toronto. Rich slow-simmered broths, perfectly chewy noodles, and fresh toppings — a bowl crafted with heart.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── INSTAGRAM REELS ── */
+.ig-section { background: var(--warm); }
+.ig-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; align-items: start;
+}
+.ig-embed-wrap {
+  border-radius: 12px; overflow: hidden;
+  display: flex; justify-content: center;
+}
+.ig-embed-wrap .instagram-media {
+  border-radius: 12px !important;
+}
+@media (max-width: 900px) {
+  .ig-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+/* ── HOME HERO ── */
+.home-hero {
+  margin-top: var(--nav-h);
+  min-height: calc(100vh - var(--nav-h));
+  background: var(--ink);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.home-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 75% 50%, rgba(192,57,43,.22) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(201,137,42,.13) 0%, transparent 60%);
+}
+.hero-grid-pattern {
+  position: absolute; inset: 0; opacity: .035;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 48px, rgba(255,255,255,.6) 48px, rgba(255,255,255,.6) 49px),
+    repeating-linear-gradient(90deg,  transparent, transparent 48px, rgba(255,255,255,.6) 48px, rgba(255,255,255,.6) 49px);
+}
+.home-hero-inner {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  padding: 80px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(201,137,42,.5);
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
+}
+.home-hero h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(42px, 5.5vw, 76px);
+  font-weight: 800; color: #fff; line-height: 1.05; margin-bottom: 24px;
+}
+.home-hero h1 em { color: var(--gold-light); font-style: normal; }
+.home-hero .hero-sub {
+  color: rgba(255,255,255,.62); font-size: 17px; line-height: 1.75;
+  max-width: 440px; margin-bottom: 40px;
+}
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* Visual side */
+.hero-visual { position: relative; }
+.hero-bowl-wrap {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 24px; padding: 32px;
+  text-align: center;
+}
+.hero-bowl-wrap svg { width: 100%; max-width: 340px; margin: 0 auto; }
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; justify-content: center;
+}
+.hero-tag-pill {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.65); font-size: 12px; letter-spacing: 1px;
+  padding: 6px 14px; border-radius: 100px;
+}
+
+/* ── MARQUEE STRIP ── */
+.marquee-strip {
+  background: var(--red); overflow: hidden;
+  padding: 14px 0; display: flex; gap: 0;
+}
+.marquee-track {
+  display: flex; gap: 48px; white-space: nowrap;
+  animation: marquee 22s linear infinite;
+}
+.marquee-track span {
+  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,.9);
+  flex-shrink: 0;
+}
+.marquee-dot { color: rgba(255,255,255,.4); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── INTRO ── */
+.intro { background: var(--cream); }
+.intro-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.intro-text .section-title { font-size: clamp(28px, 3.5vw, 44px); }
+.intro-text p { font-size: 16px; line-height: 1.8; color: var(--mist); margin-bottom: 16px; }
+.intro-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px;
+}
+.intro-stat {
+  background: var(--warm); border-radius: 12px; padding: 24px 20px; text-align: center;
+  border-top: 3px solid var(--gold);
+}
+.intro-stat .num {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 34px; font-weight: 800; color: var(--ink); line-height: 1;
+}
+.intro-stat .lbl { font-size: 12px; color: var(--mist); margin-top: 6px; letter-spacing: .5px; }
+.intro-visual svg { width: 100%; border-radius: 16px; }
+
+/* ── CATEGORIES ── */
+.categories { background: var(--ink); }
+.categories .section-title { color: white; }
+.categories .section-tag { color: var(--gold); }
+.categories .section-sub { color: rgba(255,255,255,.55); }
+.cat-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 52px;
+}
+.cat-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px; padding: 32px 20px 28px;
+  text-align: center; cursor: pointer;
+  transition: background .25s, border-color .25s, transform .2s;
+  text-decoration: none;
+}
+.cat-card:hover {
+  background: rgba(201,137,42,.12);
+  border-color: rgba(201,137,42,.4);
+  transform: translateY(-4px);
+}
+.cat-icon { font-size: 38px; margin-bottom: 14px; }
+.cat-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px; font-weight: 700; color: white; margin-bottom: 6px;
+}
+.cat-count { font-size: 12px; color: rgba(255,255,255,.35); }
+
+/* ── PROMISE ── */
+.promise { background: var(--warm); }
+.promise-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 56px; }
+.promise-card {
+  background: white; border-radius: 16px; padding: 40px 30px;
+  box-shadow: 0 2px 20px rgba(26,16,8,.07);
+  border-bottom: 3px solid transparent;
+  transition: border-color .3s, transform .2s;
+}
+.promise-card:hover { border-color: var(--red); transform: translateY(-4px); }
+.p-icon {
+  width: 50px; height: 50px; border-radius: 12px;
+  background: linear-gradient(135deg,var(--red),#e74c3c);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 20px;
+}
+.promise-card h3 { font-family:'Shippori Mincho',serif; font-size:19px; font-weight:700; margin-bottom:10px; }
+.promise-card p { font-size:15px; color:var(--mist); line-height:1.65; }
+
+/* ── CTA BAND ── */
+.cta-band {
+  background: var(--ink); padding: 80px 0;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(192,57,43,.18) 0%, transparent 70%);
+}
+.cta-band .container { position: relative; z-index: 1; }
+.cta-band h2 {
+  font-family:'Shippori Mincho',serif;
+  font-size: clamp(28px,4vw,48px); font-weight:800; color:white; margin-bottom:16px;
+}
+.cta-band p { color:rgba(255,255,255,.55); font-size:17px; margin-bottom:36px; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* ── LOCATION TEASER ── */
+.loc-teaser { background: var(--cream); }
+.loc-card {
+  background: var(--ink); border-radius: 20px; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.loc-info { padding: 56px 48px; }
+.loc-info .section-tag { color: var(--gold); }
+.loc-info h2 { font-family:'Shippori Mincho',serif; font-size:clamp(26px,3vw,38px); font-weight:800; color:white; margin-bottom:16px; }
+.loc-info p { color:rgba(255,255,255,.55); font-size:15px; line-height:1.7; margin-bottom:28px; }
+.loc-details { display:flex; flex-direction:column; gap:14px; margin-bottom:32px; }
+.loc-row { display:flex; align-items:center; gap:12px; }
+.loc-row span { font-size:18px; }
+.loc-row p { color:rgba(255,255,255,.7); font-size:14px; }
+.loc-map { background: rgba(255,255,255,.04); display:flex; align-items:center; justify-content:center; }
+.loc-map svg { width:100%; height:100%; }
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+  .home-hero-inner { grid-template-columns:1fr; gap:40px; padding:60px 24px; }
+  .hero-visual { display:none; }
+  .intro-layout { grid-template-columns:1fr; gap:40px; }
+  .cat-grid { grid-template-columns: repeat(3,1fr); }
+  .promise-grid { grid-template-columns:1fr; }
+  .loc-card { grid-template-columns:1fr; }
+  .loc-map { min-height: 220px; }
+}
+@media (max-width:600px) {
+  .cat-grid { grid-template-columns: repeat(2,1fr); }
+  .intro-stats { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<main>
+<section class="home-hero">
+  <div class="home-hero-bg"></div>
+  <div class="hero-grid-pattern"></div>
+  <div class="home-hero-inner">
+    <div class="fade-up">
+      <div class="hero-eyebrow">🍜 Toronto's Authentic Ramen</div>
+      <h1>Every Bowl,<br>Crafted With<br><em>Heart.</em></h1>
+      <p class="hero-sub">From rich tonkotsu to light shoyu — slow-simmered broths, hand-pulled noodles, and toppings made fresh daily. This is ramen done right.</p>
+      <div class="hero-btns">
+        <a href="menu.html" class="btn-primary">Explore Our Menu</a>
+        <a href="location.html" class="btn-outline light">Find a Location</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up fade-up-d2">
+      <div class="hero-bowl-wrap">
+        <svg viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shadow -->
+          <ellipse cx="160" cy="285" rx="130" ry="18" fill="#000" opacity=".25"/>
+          <!-- Bowl -->
+          <path d="M40 150 Q40 265 160 278 Q280 265 280 150 Z" fill="#fff" stroke="#e8c97a" stroke-width="2"/>
+          <path d="M55 158 Q55 255 160 266 Q265 255 265 158 Z" fill="#fdf9f3"/>
+          <!-- Broth -->
+          <ellipse cx="160" cy="153" rx="122" ry="22" fill="#c9892a" opacity=".9"/>
+          <ellipse cx="138" cy="150" rx="42" ry="8" fill="#e8c97a" opacity=".3"/>
+          <!-- Noodles -->
+          <path d="M88 173 Q108 186 128 173 Q148 160 168 173 Q188 186 208 173 Q228 160 242 173" stroke="#f5ede0" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M90 183 Q110 196 130 183 Q150 170 170 183 Q190 196 210 183 Q230 170 244 183" stroke="#f5ede0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M94 193 Q114 206 134 193 Q154 180 174 193 Q194 206 214 193 Q234 180 244 193" stroke="#f5ede0" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
+          <!-- Chashu 1 -->
+          <ellipse cx="128" cy="164" rx="22" ry="11" fill="#922b21"/>
+          <ellipse cx="128" cy="162" rx="22" ry="10" fill="#c0392b"/>
+          <ellipse cx="128" cy="161" rx="14" ry="6" fill="#e8816a" opacity=".55"/>
+          <!-- Chashu 2 -->
+          <ellipse cx="194" cy="161" rx="20" ry="10" fill="#922b21"/>
+          <ellipse cx="194" cy="159" rx="20" ry="9" fill="#c0392b"/>
+          <ellipse cx="194" cy="158" rx="13" ry="5.5" fill="#e8816a" opacity=".55"/>
+          <!-- Egg -->
+          <ellipse cx="160" cy="157" rx="13" ry="12" fill="#f5c842"/>
+          <ellipse cx="160" cy="155" rx="8" ry="7" fill="#e8a000" opacity=".75"/>
+          <!-- Green onion -->
+          <path d="M98 152 Q104 140 110 150 Q116 160 122 145" stroke="#4a7c59" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M222 150 Q228 138 234 148 Q240 158 246 143" stroke="#4a7c59" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Nori -->
+          <rect x="235" y="133" width="14" height="36" rx="2" fill="#2d4a3a" transform="rotate(-8,242,151)"/>
+          <!-- Steam -->
+          <path d="M135 133 Q130 116 138 100 Q146 84 142 68" stroke="#c9892a" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".45"/>
+          <path d="M160 128 Q155 110 163 94 Q171 78 167 62" stroke="#c9892a" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".38"/>
+          <path d="M183 131 Q178 114 186 98 Q194 82 190 66" stroke="#c9892a" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".42"/>
+          <!-- Rim -->
+          <ellipse cx="160" cy="152" rx="122" ry="22" fill="none" stroke="#e8c97a" stroke-width="2.5"/>
+          <!-- Chopsticks -->
+          <rect x="250" y="68" width="5" height="148" rx="2.5" fill="#c9892a" transform="rotate(14,252,142)"/>
+          <rect x="263" y="64" width="5" height="148" rx="2.5" fill="#a0701a" transform="rotate(17,265,138)"/>
+        </svg>
+        <div class="hero-tags">
+          <span class="hero-tag-pill">Tonkotsu</span>
+          <span class="hero-tag-pill">Shoyu</span>
+          <span class="hero-tag-pill">Spicy Miso</span>
+          <span class="hero-tag-pill">Vegan Options</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Tonkotsu Ramen</span><span class="marquee-dot">✦</span>
+    <span>Spicy Miso</span><span class="marquee-dot">✦</span>
+    <span>Shoyu Ramen</span><span class="marquee-dot">✦</span>
+    <span>Chashu Pork</span><span class="marquee-dot">✦</span>
+    <span>Soft Boiled Egg</span><span class="marquee-dot">✦</span>
+    <span>Rice Bowls</span><span class="marquee-dot">✦</span>
+    <span>Made Fresh Daily</span><span class="marquee-dot">✦</span>
+    <span>630 Yonge St Toronto</span><span class="marquee-dot">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span>Tonkotsu Ramen</span><span class="marquee-dot">✦</span>
+    <span>Spicy Miso</span><span class="marquee-dot">✦</span>
+    <span>Shoyu Ramen</span><span class="marquee-dot">✦</span>
+    <span>Chashu Pork</span><span class="marquee-dot">✦</span>
+    <span>Soft Boiled Egg</span><span class="marquee-dot">✦</span>
+    <span>Rice Bowls</span><span class="marquee-dot">✦</span>
+    <span>Made Fresh Daily</span><span class="marquee-dot">✦</span>
+    <span>630 Yonge St Toronto</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-layout">
+      <div class="intro-text">
+        <span class="section-tag">About GYOU RAMEN</span>
+        <h2 class="section-title">A Bowl of Passion, Rooted in Toronto</h2>
+        <p>Born from a love of authentic Japanese cuisine, GYOU RAMEN brings the warmth of Japan's ramen culture to the heart of Toronto's Yonge Street.</p>
+        <p>Every broth is slow-simmered for hours. Every noodle is made to the perfect chew. Every topping is prepped fresh — because a great bowl deserves nothing less.</p>
+        <a href="about.html" class="btn-primary" style="margin-top:8px;">Our Story</a>
+        <div class="intro-stats">
+          <div class="intro-stat"><div class="num">100+</div><div class="lbl">Menu Items</div></div>
+          <div class="intro-stat"><div class="num">1,500+</div><div class="lbl">Team Members</div></div>
+          <div class="intro-stat"><div class="num">$5M+</div><div class="lbl">Total Investment (CAD)</div></div>
+          <div class="intro-stat"><div class="num">🇨🇦</div><div class="lbl">Expanding Across Canada</div></div>
+        </div>
+      </div>
+      <div class="intro-visual">
+        <!-- Restaurant interior illustration -->
+        <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg">
+          <rect width="480" height="360" rx="16" fill="#1a1008"/>
+          <rect width="480" height="240" rx="0" fill="#231408"/>
+          <!-- wall planks -->
+          <rect y="40" width="480" height="2" fill="#2e1a0a" opacity=".5"/>
+          <rect y="80" width="480" height="2" fill="#2e1a0a" opacity=".4"/>
+          <rect y="120" width="480" height="2" fill="#2e1a0a" opacity=".3"/>
+          <!-- lanterns -->
+          <line x1="80" y1="0" x2="80" y2="28" stroke="#c9892a" stroke-width="2" opacity=".6"/>
+          <ellipse cx="80" cy="55" rx="18" ry="26" fill="#c0392b" opacity=".9"/>
+          <ellipse cx="80" cy="55" rx="11" ry="18" fill="#e74c3c" opacity=".4"/>
+          <rect x="73" y="78" width="14" height="6" rx="2" fill="#922b21"/>
+          <line x1="80" y1="84" x2="80" y2="94" stroke="#c9892a" stroke-width="2" opacity=".4"/>
+          <line x1="240" y1="0" x2="240" y2="24" stroke="#c9892a" stroke-width="2" opacity=".6"/>
+          <ellipse cx="240" cy="50" rx="18" ry="26" fill="#c0392b" opacity=".9"/>
+          <ellipse cx="240" cy="50" rx="11" ry="18" fill="#e74c3c" opacity=".4"/>
+          <rect x="233" y="73" width="14" height="6" rx="2" fill="#922b21"/>
+          <line x1="400" y1="0" x2="400" y2="28" stroke="#c9892a" stroke-width="2" opacity=".6"/>
+          <ellipse cx="400" cy="55" rx="18" ry="26" fill="#c0392b" opacity=".9"/>
+          <ellipse cx="400" cy="55" rx="11" ry="18" fill="#e74c3c" opacity=".4"/>
+          <rect x="393" y="78" width="14" height="6" rx="2" fill="#922b21"/>
+          <!-- menu board -->
+          <rect x="160" y="28" width="160" height="88" rx="4" fill="#0e0906"/>
+          <rect x="164" y="32" width="152" height="80" rx="3" fill="#160d04"/>
+          <text x="240" y="54" font-family="serif" font-size="12" fill="#e8c97a" text-anchor="middle" font-weight="bold">GYOU RAMEN</text>
+          <line x1="172" y1="60" x2="308" y2="60" stroke="#c9892a" stroke-width=".8" opacity=".5"/>
+          <text x="180" y="72" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.55)">Tonkotsu ············ $16</text>
+          <text x="180" y="83" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.55)">Spicy Miso ··········· $15</text>
+          <text x="180" y="94" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.55)">Shoyu Ramen ········· $14</text>
+          <text x="180" y="105" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.55)">Karaage Set ·········· $18</text>
+          <!-- counter -->
+          <rect y="230" width="480" height="130" fill="#2a1a0c"/>
+          <rect y="230" width="480" height="10" fill="#c9892a" opacity=".45"/>
+          <!-- stools -->
+          <rect x="40" y="244" width="52" height="6" rx="3" fill="#4a2e10"/>
+          <rect x="62" y="250" width="8" height="40" rx="2" fill="#3a2008"/>
+          <rect x="148" y="244" width="52" height="6" rx="3" fill="#4a2e10"/>
+          <rect x="170" y="250" width="8" height="40" rx="2" fill="#3a2008"/>
+          <rect x="256" y="244" width="52" height="6" rx="3" fill="#4a2e10"/>
+          <rect x="278" y="250" width="8" height="40" rx="2" fill="#3a2008"/>
+          <rect x="364" y="244" width="52" height="6" rx="3" fill="#4a2e10"/>
+          <rect x="386" y="250" width="8" height="40" rx="2" fill="#3a2008"/>
+          <!-- warm glow -->
+          <ellipse cx="240" cy="225" rx="160" ry="28" fill="#c9892a" opacity=".05"/>
+          <!-- GYOU label on counter -->
+          <text x="240" y="308" font-family="serif" font-size="18" fill="rgba(201,137,42,.18)" text-anchor="middle" letter-spacing="8" font-weight="bold">GYOU RAMEN</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU CATEGORIES -->
+<section class="categories">
+  <div class="container">
+    <span class="section-tag">Our Menu</span>
+    <h2 class="section-title">Something for Every Craving</h2>
+    <p class="section-sub">From hearty ramen to light sides and sweet finishes — every item crafted with the same care as our signature bowls.</p>
+    <div class="cat-grid">
+      <a href="menu.html#ramen" class="cat-card">
+        <div class="cat-icon">🍜</div>
+        <div class="cat-name">Ramen</div>
+        <div class="cat-count">Our signature</div>
+      </a>
+      <a href="menu.html#rice" class="cat-card">
+        <div class="cat-icon">🍚</div>
+        <div class="cat-name">Rice Bowls</div>
+        <div class="cat-count">Donburi & more</div>
+      </a>
+      <a href="menu.html#sides" class="cat-card">
+        <div class="cat-icon">🥟</div>
+        <div class="cat-name">Sides</div>
+        <div class="cat-count">Perfect pairings</div>
+      </a>
+      <a href="menu.html#dessert" class="cat-card">
+        <div class="cat-icon">🍡</div>
+        <div class="cat-name">Dessert</div>
+        <div class="cat-count">Sweet endings</div>
+      </a>
+      <a href="menu.html#drinks" class="cat-card">
+        <div class="cat-icon">🧋</div>
+        <div class="cat-name">Drinks</div>
+        <div class="cat-count">Hot & cold</div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <a href="menu.html" class="btn-primary">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="container">
+    <span class="section-tag">Why GYOU RAMEN</span>
+    <h2 class="section-title">Our Promise in Every Bowl</h2>
+    <div class="promise-grid">
+      <div class="promise-card">
+        <div class="p-icon">🍲</div>
+        <h3>Slow-Simmered Broths</h3>
+        <p>Our broths are prepared fresh daily, simmered for hours to develop deep, complex flavors that you can taste in every spoonful.</p>
+      </div>
+      <div class="promise-card">
+        <div class="p-icon">🇯🇵</div>
+        <h3>Authentic Techniques</h3>
+        <p>We honor traditional Japanese ramen-making methods — from tare seasoning to noodle hydration — while adding a local Canadian touch.</p>
+      </div>
+      <div class="promise-card">
+        <div class="p-icon">🌱</div>
+        <h3>Fresh, Quality Ingredients</h3>
+        <p>Every topping — from chashu pork to soft-boiled eggs to crisp green onions — is prepped fresh to order, every single day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION TEASER -->
+<section class="loc-teaser">
+  <div class="container">
+    <div class="loc-card">
+      <div class="loc-info">
+        <span class="section-tag">Find Us</span>
+        <h2>Come Visit Us on Yonge Street</h2>
+        <p>We're in the heart of Toronto, ready to serve you a bowl made with heart. Dine in, take out, or inquire about catering.</p>
+        <div class="loc-details">
+          <div class="loc-row"><span>📍</span><p>630 Yonge St, Toronto, ON</p></div>
+          <div class="loc-row"><span>📞</span><p>+1 (365) 314-9955</p></div>
+          <div class="loc-row"><span>⏰</span><p>Mon–Sun: 11:00 AM – 10:00 PM</p></div>
+        </div>
+        <a href="location.html" class="btn-primary">Get Directions</a>
+      </div>
+      <div class="loc-map">
+        <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="280" fill="#1a1008"/>
+          <!-- Streets grid -->
+          <rect x="0" y="100" width="300" height="18" fill="rgba(255,255,255,.06)"/>
+          <rect x="0" y="160" width="300" height="12" fill="rgba(255,255,255,.04)"/>
+          <rect x="120" y="0" width="14" height="280" fill="rgba(255,255,255,.06)"/>
+          <rect x="200" y="0" width="10" height="280" fill="rgba(255,255,255,.04)"/>
+          <!-- Yonge St label -->
+          <text x="127" y="95" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.35)" transform="rotate(90,127,95)">YONGE ST</text>
+          <!-- Pin -->
+          <circle cx="127" cy="109" r="16" fill="var(--red)" opacity=".9"/>
+          <circle cx="127" cy="109" r="6" fill="white"/>
+          <circle cx="127" cy="109" r="24" fill="var(--red)" opacity=".2"/>
+          <!-- Label -->
+          <rect x="72" y="140" width="110" height="28" rx="6" fill="rgba(255,255,255,.08)"/>
+          <text x="127" y="158" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">GYOU RAMEN · 630 Yonge</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INSTAGRAM REELS -->
+<section class="ig-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <span class="section-tag">Follow Us</span>
+      <h2 class="section-title">@gyouramen on Instagram</h2>
+      <p class="section-sub" style="margin:0 auto;">See what's fresh, what's spicy, and what's coming next — straight from our kitchen.</p>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DYqIPAmPhIH/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 2px 24px rgba(26,16,8,.12);margin:0;max-width:100%;min-width:280px;padding:0;width:100%;"></blockquote>
+      </div>
+      <div class="ig-embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DUjpCgRjFml/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 2px 24px rgba(26,16,8,.12);margin:0;max-width:100%;min-width:280px;padding:0;width:100%;"></blockquote>
+      </div>
+      <div class="ig-embed-wrap">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DVHWz2liV_n/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 2px 24px rgba(26,16,8,.12);margin:0;max-width:100%;min-width:280px;padding:0;width:100%;"></blockquote>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://instagram.com/gyouramen" target="_blank" class="btn-primary">Follow @gyouramen</a>
+    </div>
+  </div>
+</section>
+<script async src="//www.instagram.com/embed.js"></script>
+
+<!-- FRANCHISE CTA -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Interested in Owning a GYOU RAMEN?</h2>
+    <p>We're expanding across Canada and looking for passionate franchise partners to join our family.</p>
+    <div class="cta-btns">
+      <a href="franchising.html" class="btn-primary">Learn About Franchising</a>
+      <a href="contact.html" class="btn-outline light">Contact Us</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script src="nav-footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu – GYOU RAMEN</title>
+<meta name="description" content="Explore GYOU RAMEN's full menu — pork ramen, beef ramen, chicken & veggie pork-free ramen, rice bowls, sides, desserts, coffee, tea and drinks. Made fresh daily in Toronto.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── PAGE LAYOUT ── */
+.menu-page { background: var(--cream); padding-top: 40px; }
+
+/* ── STICKY CATEGORY NAV ── */
+.menu-nav-wrap {
+  position: sticky; top: 72px; z-index: 100;
+  background: rgba(250,246,239,.96); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(26,16,8,.08);
+  padding: 0 48px;
+}
+.menu-nav {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; gap: 4px; overflow-x: auto;
+  scrollbar-width: none; padding: 12px 0;
+}
+.menu-nav::-webkit-scrollbar { display: none; }
+.mnav-btn {
+  flex-shrink: 0; padding: 8px 18px; border-radius: 100px;
+  border: 1.5px solid rgba(26,16,8,.12); background: none;
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  font-weight: 600; color: var(--ink); cursor: pointer;
+  transition: all .2s; white-space: nowrap;
+}
+.mnav-btn:hover, .mnav-btn.active {
+  background: var(--ink); color: var(--gold-light); border-color: var(--ink);
+}
+
+/* ── SECTION HEADER ── */
+.menu-section { padding: 72px 0 24px; }
+.menu-section-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 36px; padding-bottom: 16px;
+  border-bottom: 2px solid rgba(26,16,8,.08);
+}
+.ms-icon { font-size: 36px; }
+.ms-title { font-family: 'Shippori Mincho', serif; font-size: 30px; font-weight: 800; }
+.ms-sub { font-size: 14px; color: var(--mist); margin-top: 3px; }
+
+/* ── SUBSECTION (e.g. Pork / Beef / Chicken) ── */
+.menu-subsection { margin-bottom: 48px; }
+.subsection-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ink); color: var(--gold-light);
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 1px;
+  padding: 7px 20px; border-radius: 4px;
+  margin-bottom: 20px; text-transform: uppercase;
+}
+.subsection-label.pork-free { background: var(--red); color: white; }
+.subsection-label.veggie { background: #2d7a3a; color: white; }
+
+/* ── RAMEN GRID ── */
+.ramen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ramen-item {
+  background: white; border-radius: 14px; padding: 22px 24px;
+  display: flex; align-items: flex-start; gap: 14px;
+  box-shadow: 0 2px 16px rgba(26,16,8,.06);
+  border: 1px solid rgba(26,16,8,.05);
+  transition: transform .2s, box-shadow .2s;
+}
+.ramen-item:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,16,8,.1); }
+.ramen-code {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--red); color: white;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid rgba(192,57,43,.3);
+}
+.ramen-body { flex: 1; min-width: 0; }
+.ramen-name { font-family: 'Shippori Mincho', serif; font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.ramen-jp { font-size: 12px; color: var(--mist); margin-bottom: 5px; }
+.ramen-desc { font-size: 13px; color: var(--mist); line-height: 1.5; }
+.ramen-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+.ramen-price { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 800; color: var(--red); }
+.ramen-badges { display: flex; gap: 6px; }
+.badge {
+  font-size: 10px; padding: 3px 9px; border-radius: 100px; font-weight: 600; letter-spacing: .3px;
+}
+.badge-spicy { background: #fff0ed; color: var(--red); }
+.badge-popular { background: #fff8e8; color: var(--gold); }
+.badge-new { background: #edf7ed; color: #2d7a3a; }
+
+/* ── INCLUDES NOTE ── */
+.includes-note {
+  background: var(--warm); border-radius: 10px;
+  padding: 14px 20px; font-size: 13px; color: var(--mist);
+  margin-top: 16px; line-height: 1.6;
+  border-left: 3px solid var(--gold);
+}
+.includes-note strong { color: var(--ink); }
+
+/* ── LUNCH SPECIAL ── */
+.lunch-banner {
+  background: var(--ink); border-radius: 16px;
+  padding: 28px 36px; margin-bottom: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; position: relative; overflow: hidden;
+}
+.lunch-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 100% at 80% 50%, rgba(192,57,43,.2) 0%, transparent 70%);
+}
+.lunch-text { position: relative; z-index: 1; }
+.lunch-text .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+.lunch-text h3 { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 800; color: white; margin-bottom: 4px; }
+.lunch-text p { color: rgba(255,255,255,.55); font-size: 14px; }
+.lunch-price { position: relative; z-index: 1; text-align: right; flex-shrink: 0; }
+.lunch-price .was { font-size: 14px; color: rgba(255,255,255,.35); text-decoration: line-through; }
+.lunch-price .now { font-family: 'Shippori Mincho', serif; font-size: 38px; font-weight: 800; color: var(--gold-light); line-height: 1; }
+
+/* ── NOODLE + TOPPINGS ── */
+.noodle-toppings { background: var(--ink); border-radius: 16px; padding: 32px 36px; margin-bottom: 48px; }
+.nt-title { font-family: 'Shippori Mincho', serif; font-size: 18px; font-weight: 800; color: var(--gold-light); margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+.noodle-options { display: flex; gap: 20px; margin-bottom: 28px; }
+.noodle-opt {
+  flex: 1; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px; padding: 16px 20px; text-align: center;
+}
+.noodle-opt h4 { color: white; font-family: 'Shippori Mincho', serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.noodle-opt p { color: rgba(255,255,255,.4); font-size: 12px; }
+.toppings-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+}
+.topping-item {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px; padding: 10px 12px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.topping-item span:first-child { font-size: 13px; color: rgba(255,255,255,.7); }
+.topping-item span:last-child { font-size: 13px; font-weight: 600; color: var(--gold-light); }
+
+/* ── RICE GRID ── */
+.rice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.rice-item {
+  background: white; border-radius: 14px; padding: 22px 24px;
+  box-shadow: 0 2px 16px rgba(26,16,8,.06);
+  border: 1px solid rgba(26,16,8,.05);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  transition: transform .2s;
+}
+.rice-item:hover { transform: translateY(-3px); }
+.rice-left { display: flex; align-items: center; gap: 14px; }
+.rice-code {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: var(--warm); color: var(--ink);
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.rice-name { font-family: 'Shippori Mincho', serif; font-size: 15px; font-weight: 700; }
+.rice-jp { font-size: 12px; color: var(--mist); margin-top: 2px; }
+.rice-price { font-family: 'Shippori Mincho', serif; font-size: 18px; font-weight: 800; color: var(--red); flex-shrink: 0; }
+
+/* ── SIDES GRID ── */
+.sides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.side-item {
+  background: white; border-radius: 12px; padding: 18px 20px;
+  box-shadow: 0 2px 12px rgba(26,16,8,.06);
+  border: 1px solid rgba(26,16,8,.05);
+  display: flex; flex-direction: column; gap: 6px;
+  transition: transform .2s;
+}
+.side-item:hover { transform: translateY(-2px); }
+.side-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.side-code { font-size: 11px; color: var(--mist); font-weight: 600; flex-shrink: 0; }
+.side-name { font-family: 'Shippori Mincho', serif; font-size: 14px; font-weight: 700; line-height: 1.3; flex: 1; }
+.side-sub { font-size: 11px; color: var(--mist); font-style: italic; }
+.side-price { font-family: 'Shippori Mincho', serif; font-size: 16px; font-weight: 800; color: var(--red); }
+
+/* ── DRINKS / DESSERT GRID ── */
+.drink-subsection { margin-bottom: 36px; }
+.drink-subsection-title {
+  font-family: 'Shippori Mincho', serif; font-size: 18px; font-weight: 700;
+  margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 1px solid rgba(26,16,8,.1);
+  display: flex; align-items: center; gap: 10px;
+}
+.drinks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.drink-item {
+  background: white; border-radius: 12px; padding: 16px 18px;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 2px 10px rgba(26,16,8,.05);
+  border: 1px solid rgba(26,16,8,.05);
+  gap: 8px;
+}
+.drink-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+.drink-sub { font-size: 11px; color: var(--mist); margin-top: 2px; }
+.drink-price { font-family: 'Shippori Mincho', serif; font-size: 16px; font-weight: 800; color: var(--red); flex-shrink: 0; }
+
+/* ── ALLERGY NOTE ── */
+.allergy-section { background: var(--ink); padding: 56px 0; margin-top: 32px; }
+.allergy-box {
+  max-width: 900px; margin: 0 auto; text-align: center;
+  padding: 0 24px;
+}
+.allergy-box h3 { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 800; color: var(--gold-light); margin-bottom: 16px; }
+.allergy-box p { color: rgba(255,255,255,.6); font-size: 15px; line-height: 1.8; }
+.allergy-box .pork-note {
+  margin-top: 20px; padding: 16px 24px;
+  background: rgba(192,57,43,.15); border: 1px solid rgba(192,57,43,.3);
+  border-radius: 10px; font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.7;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  .menu-nav-wrap { padding: 0 16px; }
+  .ramen-grid { grid-template-columns: 1fr; }
+  .toppings-grid { grid-template-columns: repeat(2,1fr); }
+  .sides-grid { grid-template-columns: 1fr 1fr; }
+  .drinks-grid { grid-template-columns: 1fr 1fr; }
+  .rice-grid { grid-template-columns: 1fr; }
+  .lunch-banner { flex-direction: column; text-align: center; }
+  .lunch-price { text-align: center; }
+  .noodle-options { flex-direction: column; }
+}
+@media(max-width:600px) {
+  .sides-grid { grid-template-columns: 1fr; }
+  .drinks-grid { grid-template-columns: 1fr; }
+  .toppings-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <h1>Our Menu</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> → Menu</p>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<div class="menu-nav-wrap">
+  <div class="menu-nav">
+    <button class="mnav-btn active" onclick="scrollToSection('ramen', this)">🍜 Ramen</button>
+    <button class="mnav-btn" onclick="scrollToSection('rice', this)">🍚 Rice</button>
+    <button class="mnav-btn" onclick="scrollToSection('sides', this)">🥟 Sides</button>
+    <button class="mnav-btn" onclick="scrollToSection('dessert', this)">🍰 Dessert</button>
+    <button class="mnav-btn" onclick="scrollToSection('coffee', this)">☕ Coffee & Tea</button>
+    <button class="mnav-btn" onclick="scrollToSection('drinks', this)">🧋 Drinks</button>
+  </div>
+</div>
+
+<main>
+<div class="menu-page">
+<div class="container">
+
+  <!-- ══════════════════════════════
+       RAMEN
+  ══════════════════════════════ -->
+  <div class="menu-section" id="ramen">
+    <div class="menu-section-header">
+      <div class="ms-icon">🍜</div>
+      <div>
+        <div class="ms-title">Ramen</div>
+        <div class="ms-sub">All ramen: choose Thin or Thick Noodle · 400 cal</div>
+      </div>
+    </div>
+
+    <!-- LUNCH SPECIAL -->
+    <div class="lunch-banner">
+      <div class="lunch-text">
+        <div class="tag">⏰ Lunch Special</div>
+        <h3>Tonkotsu Ramen</h3>
+        <p>Monday – Sunday &nbsp;·&nbsp; 11:30 AM – 4:30 PM only</p>
+      </div>
+      <div class="lunch-price">
+        <div class="was">$15.99</div>
+        <div class="now">$12.99</div>
+      </div>
+    </div>
+
+    <!-- PORK RAMEN -->
+    <div class="menu-subsection">
+      <div class="subsection-label">🐷 Pork Ramen</div>
+      <div class="ramen-grid">
+        <div class="ramen-item">
+          <div class="ramen-code">A1</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Tonkotsu Ramen</div>
+            <div class="ramen-jp">豚骨ラーメン</div>
+            <div class="ramen-desc">Classic pork bone broth ramen</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$15.99</span>
+              <div class="ramen-badges"><span class="badge badge-popular">⭐ Popular</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A2</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Tonkotsu Garlic Ramen</div>
+            <div class="ramen-jp">黒マー油豚骨ラーメン</div>
+            <div class="ramen-desc">Classic pork bone broth with black garlic oil</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A3</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Miso Ramen</div>
+            <div class="ramen-jp">味噌豚骨ラーメン</div>
+            <div class="ramen-desc">Pork bone broth with Japanese miso (soybean paste)</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$15.99</span>
+              <div class="ramen-badges"><span class="badge badge-popular">⭐ Popular</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A4</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Miso Black Ramen</div>
+            <div class="ramen-jp">味噌黒マー油ラーメン</div>
+            <div class="ramen-desc">Pork bone broth with Japanese miso and black garlic oil</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A5</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Pork Spicy Garlic Ramen</div>
+            <div class="ramen-jp">辛にんにく豚骨ラーメン</div>
+            <div class="ramen-desc">Pork bone broth with chili and roasted garlic oil</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A6</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Spicy and Sour Ramen</div>
+            <div class="ramen-jp">酸辣ラーメン</div>
+            <div class="ramen-desc">Pork bone broth blended with chili, tomato, and aromatic Asian spices</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A7</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Tonkotsu Shoyu Ramen</div>
+            <div class="ramen-jp">醤油豚骨ラーメン</div>
+            <div class="ramen-desc">Pork bone broth seasoned with Japanese soy sauce</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A8</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Shoyu Ramen</div>
+            <div class="ramen-jp">醤油ラーメン</div>
+            <div class="ramen-desc">Light pork bone broth seasoned with Japanese soy sauce</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A9</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Spicy Miso Ramen</div>
+            <div class="ramen-jp">辛味噌ラーメン</div>
+            <div class="ramen-desc">Pork bone broth blended with spicy Japanese miso soybean paste</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A10</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Tomato Ramen</div>
+            <div class="ramen-jp">トマト豚骨ラーメン</div>
+            <div class="ramen-desc">Pork bone broth blended with tomato for a rich and tangy flavor</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A11</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Pork Abura Soba</div>
+            <div class="ramen-jp">油そば</div>
+            <div class="ramen-desc">Broth-free ramen tossed with chashu, vegetables and a rich soy-based sauce</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code">A12</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Spicy Abura Soba</div>
+            <div class="ramen-jp">辛油そば</div>
+            <div class="ramen-desc">Broth-free ramen tossed with chashu and our signature spicy chili oil</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="includes-note">
+        <strong>All pork ramen include:</strong> 2 pcs chashu, bamboo shoots, sweet corn, seasoned eggs, black fungus, nori, and green onions
+      </div>
+    </div>
+
+    <!-- BEEF RAMEN -->
+    <div class="menu-subsection">
+      <div class="subsection-label">🥩 Beef Ramen <span style="font-size:12px;font-weight:400;opacity:.7;">(Pork Broth)</span></div>
+      <div class="ramen-grid">
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B1</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Classic Beef Ramen</div>
+            <div class="ramen-jp">牛肉ラーメン</div>
+            <div class="ramen-desc">Classic pork bone broth ramen with beef</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B2</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Beef Garlic Ramen</div>
+            <div class="ramen-jp">黒マー油牛肉ラーメン</div>
+            <div class="ramen-desc">Classic pork bone broth ramen with beef and black garlic oil</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B3</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Beef Miso Ramen</div>
+            <div class="ramen-jp">味噌牛肉ラーメン</div>
+            <div class="ramen-desc">Pork bone broth blended with Japanese miso (soybean paste)</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B4</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Miso Black Ramen</div>
+            <div class="ramen-jp">味噌黒マー油牛肉ラーメン</div>
+            <div class="ramen-desc">Pork bone broth with Japanese miso and black garlic oil</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B5</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Beef Spicy Garlic Ramen</div>
+            <div class="ramen-jp">牛肉辛にんにくラーメン</div>
+            <div class="ramen-desc">Pork bone broth with beef, chili and roasted garlic oil</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$15.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B6</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Spicy and Sour Ramen</div>
+            <div class="ramen-jp">酸辣牛肉ラーメン</div>
+            <div class="ramen-desc">Pork bone broth with beef, chili, tomato and Asian spices</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B7</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Beef Shoyu Ramen</div>
+            <div class="ramen-jp">醤油牛肉ラーメン</div>
+            <div class="ramen-desc">Pork bone broth with beef and Japanese soy sauce</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#8B4513;">B8</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Beef Tomato Ramen</div>
+            <div class="ramen-jp">トマトラーメン</div>
+            <div class="ramen-desc">Pork bone broth with beef and tomato for a rich and tangy flavor</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="includes-note">
+        <strong>All beef ramen include:</strong> beef slices, bamboo shoots, sweet corn, seasoned eggs, black fungus, nori, and green onions
+      </div>
+    </div>
+
+    <!-- CHICKEN RAMEN (PORK-FREE) -->
+    <div class="menu-subsection">
+      <div class="subsection-label pork-free">🐔 Chicken Ramen — Pork-Free</div>
+      <div class="ramen-grid">
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#c9892a;">C1</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Chicken Miso Ramen</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#c9892a;">C2</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Chicken Shoyu Ramen</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#c9892a;">C3</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Chicken Spicy Garlic Ramen</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#c9892a;">C4</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Chicken Spicy Miso Ramen</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#c9892a;">C5</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Chicken Miso Black Ramen</div>
+            <div class="ramen-footer"><span class="ramen-price">$16.99</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="includes-note">
+        Chicken broth · 2 pcs sliced chicken breast, seasoned eggs, bamboo shoots, sweet corn, nori, black fungus, scallions
+      </div>
+    </div>
+
+    <!-- VEGGIE RAMEN -->
+    <div class="menu-subsection">
+      <div class="subsection-label veggie">🌱 Veggie Ramen — Pork-Free</div>
+      <div class="ramen-grid">
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#2d7a3a;">C6</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Veggie Miso Ramen</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#2d7a3a;">C7</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Veggie Shoyu Ramen</div>
+            <div class="ramen-footer"><span class="ramen-price">$15.99</span></div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#2d7a3a;">C8</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Veggie Spicy Garlic Ramen</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ramen-item">
+          <div class="ramen-code" style="background:#2d7a3a;">C9</div>
+          <div class="ramen-body">
+            <div class="ramen-name">Veggie Spicy Miso Ramen</div>
+            <div class="ramen-footer">
+              <span class="ramen-price">$16.99</span>
+              <div class="ramen-badges"><span class="badge badge-spicy">🌶 Spicy</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="includes-note">
+        Veggie broth · 2 pcs tofu, seasoned eggs, bamboo shoots, sweet corn, nori, black fungus, scallions
+      </div>
+    </div>
+
+    <!-- NOODLE + ADDITIONAL TOPPINGS -->
+    <div class="noodle-toppings">
+      <div class="nt-title">Noodle Choice + Additional Toppings</div>
+      <div class="noodle-options">
+        <div class="noodle-opt">
+          <h4>Thin Noodle</h4>
+          <p>400 cal · Classic style</p>
+        </div>
+        <div class="noodle-opt">
+          <h4>Thick Noodle</h4>
+          <p>400 cal · Hearty & chewy</p>
+        </div>
+      </div>
+      <div class="toppings-grid">
+        <div class="topping-item"><span>Pork (2 pcs)</span><span>$4.99</span></div>
+        <div class="topping-item"><span>Chicken (2 pcs)</span><span>$4.99</span></div>
+        <div class="topping-item"><span>Toufu (2 pcs)</span><span>$3.99</span></div>
+        <div class="topping-item"><span>Rice</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Mushrooms</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Beef Rolls</span><span>$3.99</span></div>
+        <div class="topping-item"><span>Bamboo Shoots</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Nori</span><span>$0.99</span></div>
+        <div class="topping-item"><span>Extra Soup</span><span>$4.99</span></div>
+        <div class="topping-item"><span>Thin Noodle</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Sweet Corn</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Scallions</span><span>$0.99</span></div>
+        <div class="topping-item"><span>Seasoned Eggs</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Thick Noodle</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Black Fungus</span><span>$1.99</span></div>
+        <div class="topping-item"><span>Black Garlic Oil</span><span>$0.99</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       RICE
+  ══════════════════════════════ -->
+  <div class="menu-section" id="rice">
+    <div class="menu-section-header">
+      <div class="ms-icon">🍚</div>
+      <div>
+        <div class="ms-title">Rice</div>
+        <div class="ms-sub">Donburi & fried rice dishes</div>
+      </div>
+    </div>
+    <div class="rice-grid">
+      <div class="rice-item">
+        <div class="rice-left">
+          <div class="rice-code">D1</div>
+          <div>
+            <div class="rice-name">Beef Donburi</div>
+            <div class="rice-jp">牛丼</div>
+          </div>
+        </div>
+        <div class="rice-price">$15.99</div>
+      </div>
+      <div class="rice-item">
+        <div class="rice-left">
+          <div class="rice-code">D2</div>
+          <div>
+            <div class="rice-name">Vegetable Fried Rice</div>
+            <div class="rice-jp">野菜チャーハン</div>
+          </div>
+        </div>
+        <div class="rice-price">$15.99</div>
+      </div>
+      <div class="rice-item">
+        <div class="rice-left">
+          <div class="rice-code">D3</div>
+          <div>
+            <div class="rice-name">Curry Chicken Rice</div>
+            <div class="rice-jp">チキンカレーライス</div>
+          </div>
+        </div>
+        <div class="rice-price">$15.99</div>
+      </div>
+      <div class="rice-item">
+        <div class="rice-left">
+          <div class="rice-code">D4</div>
+          <div>
+            <div class="rice-name">Curry Tonkatsu Rice</div>
+            <div class="rice-jp">とんかつカレーライス</div>
+          </div>
+        </div>
+        <div class="rice-price">$15.99</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SIDES
+  ══════════════════════════════ -->
+  <div class="menu-section" id="sides">
+    <div class="menu-section-header">
+      <div class="ms-icon">🥟</div>
+      <div>
+        <div class="ms-title">Sides</div>
+        <div class="ms-sub">Perfect companions to your bowl</div>
+      </div>
+    </div>
+    <div class="sides-grid">
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E1</span>
+          <span class="side-name">Seaweed Salad</span>
+        </div>
+        <div class="side-sub">海藻サラダ</div>
+        <div class="side-price">$4.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E2</span>
+          <span class="side-name">Vegetable Salad</span>
+        </div>
+        <div class="side-sub">野菜サラダ</div>
+        <div class="side-price">$5.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E3</span>
+          <span class="side-name">Japanese Egg Salad</span>
+        </div>
+        <div class="side-sub">玉子サラダ</div>
+        <div class="side-price">$6.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E4</span>
+          <span class="side-name">Kani Salad</span>
+        </div>
+        <div class="side-sub">カニカマサラダ · Crab Stick Salad</div>
+        <div class="side-price">$7.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E5</span>
+          <span class="side-name">Edamame</span>
+        </div>
+        <div class="side-sub">枝豆</div>
+        <div class="side-price">$5.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E6</span>
+          <span class="side-name">Wasabi Octopus</span>
+        </div>
+        <div class="side-sub">わさびタコ</div>
+        <div class="side-price">$6.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E7</span>
+          <span class="side-name">Takoyaki</span>
+        </div>
+        <div class="side-sub">たこ焼き · 4 pcs / 6 pcs</div>
+        <div class="side-price">$5.99 / $6.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E8</span>
+          <span class="side-name">Fried Chicken Wings</span>
+        </div>
+        <div class="side-sub">手羽先唐揚げ</div>
+        <div class="side-price">$10.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E9</span>
+          <span class="side-name">Karaage</span>
+        </div>
+        <div class="side-sub">唐揚げ · Japanese Fried Chicken</div>
+        <div class="side-price">$10.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E10</span>
+          <span class="side-name">Tonkatsu</span>
+        </div>
+        <div class="side-sub">とんかつ · Japanese Pork Cutlet</div>
+        <div class="side-price">$10.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E11</span>
+          <span class="side-name">Gyoza</span>
+        </div>
+        <div class="side-sub">餃子 · Chicken / Pork / Veggie</div>
+        <div class="side-price">$6.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E12</span>
+          <span class="side-name">Deep Fried Squid Balls</span>
+        </div>
+        <div class="side-sub">イカ揚げ · 6 pcs</div>
+        <div class="side-price">$7.99</div>
+      </div>
+      <div class="side-item">
+        <div class="side-header">
+          <span class="side-code">E13</span>
+          <span class="side-name">Fries</span>
+        </div>
+        <div class="side-sub">フライドポテト</div>
+        <div class="side-price">$5.99</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       DESSERT
+  ══════════════════════════════ -->
+  <div class="menu-section" id="dessert">
+    <div class="menu-section-header">
+      <div class="ms-icon">🍰</div>
+      <div>
+        <div class="ms-title">Dessert</div>
+        <div class="ms-sub">Sweet endings to a perfect meal</div>
+      </div>
+    </div>
+    <div class="drinks-grid">
+      <div class="drink-item">
+        <div><div class="drink-name">Yuzu Cheesecake</div><div class="drink-sub">⭐ Recommended</div></div>
+        <div class="drink-price">$5.99</div>
+      </div>
+      <div class="drink-item">
+        <div><div class="drink-name">Matcha Cheesecake</div></div>
+        <div class="drink-price">$5.99</div>
+      </div>
+      <div class="drink-item">
+        <div><div class="drink-name">Mango Cheesecake</div></div>
+        <div class="drink-price">$5.99</div>
+      </div>
+      <div class="drink-item">
+        <div><div class="drink-name">Strawberry Mini Cake Roll</div></div>
+        <div class="drink-price">$4.99</div>
+      </div>
+      <div class="drink-item">
+        <div><div class="drink-name">Chocolate Mini Cake Roll</div></div>
+        <div class="drink-price">$4.99</div>
+      </div>
+      <div class="drink-item">
+        <div><div class="drink-name">Vanilla Mini Cake Roll</div></div>
+        <div class="drink-price">$4.99</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       COFFEE & TEA
+  ══════════════════════════════ -->
+  <div class="menu-section" id="coffee">
+    <div class="menu-section-header">
+      <div class="ms-icon">☕</div>
+      <div>
+        <div class="ms-title">Coffee & Tea</div>
+        <div class="ms-sub">Hot & iced selections</div>
+      </div>
+    </div>
+    <div class="drink-subsection">
+      <div class="drink-subsection-title">🍵 Tea</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div><div class="drink-name">Mango Jasmine Green Tea</div><div class="drink-sub">Iced</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">White Peach Green Tea</div><div class="drink-sub">Iced</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Japanese Green Tea</div><div class="drink-sub">Hot / Iced</div></div>
+          <div class="drink-price">$2.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Passion Fruit Green Tea</div><div class="drink-sub">Iced</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Strawberry Green Tea Refresher</div><div class="drink-sub">Iced</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+      </div>
+    </div>
+    <div class="drink-subsection">
+      <div class="drink-subsection-title">☕ Coffee</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div><div class="drink-name">Americano</div></div>
+          <div class="drink-price">$4.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Latte</div></div>
+          <div class="drink-price">$4.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Persimmon Latte / Coconut Latte</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       DRINKS
+  ══════════════════════════════ -->
+  <div class="menu-section" id="drinks">
+    <div class="menu-section-header">
+      <div class="ms-icon">🧋</div>
+      <div>
+        <div class="ms-title">Drinks</div>
+        <div class="ms-sub">Milk tea, slush, and cold beverages</div>
+      </div>
+    </div>
+    <div class="drink-subsection">
+      <div class="drink-subsection-title">🥛 Milk Tea</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div><div class="drink-name">Original Black Milk Tea</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Jasmine Green Milk Tea</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Velvet Persimmon Milk</div><div class="drink-sub"></div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+      </div>
+    </div>
+    <div class="drink-subsection">
+      <div class="drink-subsection-title">🍹 Yakult-Style Drinks</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div><div class="drink-name">Grape Yakult-Style Drink</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Mango Yakult-Style Drink</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Strawberry Yakult-Style Drink</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Blueberry Yakult-Style Drink</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Peach Yakult-Style Drink</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+      </div>
+    </div>
+    <div class="drink-subsection">
+      <div class="drink-subsection-title">🧊 Slush</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div><div class="drink-name">Mango Slush</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Strawberry Slush</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Blueberry Slush</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+      </div>
+    </div>
+    <div class="drink-subsection">
+      <div class="drink-subsection-title">🥤 Hot & Cold Beverages</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div><div class="drink-name">Matcha Latte</div><div class="drink-sub">Hot / Iced</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Hot Chocolate</div></div>
+          <div class="drink-price">$5.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Coke / Diet Coke / Zero Coke</div></div>
+          <div class="drink-price">$1.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Fanta / Canada Dry / Iced Tea</div></div>
+          <div class="drink-price">$1.99</div>
+        </div>
+        <div class="drink-item">
+          <div><div class="drink-name">Arizona</div></div>
+          <div class="drink-price">$2.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</div><!-- /menu-page -->
+
+<!-- ALLERGY SECTION -->
+<div class="allergy-section">
+  <div class="allergy-box">
+    <h3>⚠️ Allergen Information</h3>
+    <p>Foods served at GYOU RAMEN may contain <strong style="color:rgba(255,255,255,.85);">gluten, wheat, milk, eggs, sesame, peanuts, tree nuts, mushrooms</strong> and other allergens. Please inform your server of any food allergies before placing your order. <strong style="color:rgba(255,255,255,.85);">Tax is not included</strong> in listed prices.</p>
+    <div class="pork-note">
+      🐷 Pork ramen (A1–A10) may contain gluten, wheat, eggs, and soybeans — but do <strong>not</strong> contain nuts or sesame.<br>
+      A11 and A12 (Abura Soba) contain sesame and peanuts.<br>
+      All pork ramen are free of fish ingredients.
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script src="nav-footer.js"></script>
+<script>
+function scrollToSection(id, btn) {
+  const el = document.getElementById(id);
+  if (el) {
+    const offset = 130;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+  document.querySelectorAll('.mnav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// Auto-highlight nav on scroll
+const sections = ['ramen','rice','sides','dessert','coffee','drinks'];
+window.addEventListener('scroll', () => {
+  let current = sections[0];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 160) current = id;
+  });
+  document.querySelectorAll('.mnav-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', sections[i] === current);
+  });
+});
+</script>
+</body>
+</html>

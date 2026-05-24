@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us – GYOU RAMEN</title>
+<meta name="description" content="Learn the story of GYOU RAMEN — born in Toronto, inspired by Japan. Authentic ramen crafted with heart and passion.">
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ── PHOTO HERO ── */
+.about-hero {
+  margin-top: var(--nav-h);
+  height: 520px;
+  position: relative; overflow: hidden;
+}
+.about-hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+  display: block;
+}
+.about-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26,16,8,.25) 0%,
+    rgba(26,16,8,.55) 60%,
+    rgba(26,16,8,.85) 100%
+  );
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  padding-bottom: 64px; text-align: center;
+}
+.about-hero-overlay .tag {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 14px;
+}
+.about-hero-overlay h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(38px, 6vw, 72px); font-weight: 800;
+  color: white; line-height: 1.1; margin-bottom: 16px;
+}
+.about-hero-overlay h1 span { color: var(--gold-light); }
+.about-hero-overlay p {
+  color: rgba(255,255,255,.7); font-size: 17px;
+  max-width: 520px; line-height: 1.7;
+}
+.breadcrumb-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  padding: 20px 48px;
+  font-size: 13px; color: rgba(255,255,255,.45); letter-spacing: 1px;
+}
+.breadcrumb-bar a { color: var(--gold); }
+
+/* ── STORY ── */
+.about-story { background: var(--cream); }
+.story-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.story-text p {
+  font-size: 16px; line-height: 1.85; color: var(--mist); margin-bottom: 18px;
+}
+.story-text .highlight {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 21px; font-weight: 700; color: var(--ink);
+  border-left: 3px solid var(--red); padding-left: 20px;
+  margin: 28px 0; line-height: 1.5;
+}
+.story-photo {
+  position: relative;
+}
+.story-photo-main {
+  width: 100%; height: 480px;
+  object-fit: cover; border-radius: 16px;
+  display: block;
+}
+.story-photo-badge {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--ink); color: white;
+  padding: 20px 24px; border-radius: 14px;
+  border: 3px solid var(--cream);
+  text-align: center;
+}
+.story-photo-badge .n {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 32px; font-weight: 800; color: var(--gold-light);
+  line-height: 1; display: block;
+}
+.story-photo-badge .l {
+  font-size: 11px; color: rgba(255,255,255,.55);
+  letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;
+}
+
+/* ── REAL PHOTOS GRID ── */
+.real-photos { background: var(--warm); }
+.real-photos .section-title { }
+.photo-mosaic {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 12px; margin-top: 52px;
+  border-radius: 16px; overflow: hidden;
+}
+.photo-mosaic-item {
+  overflow: hidden; position: relative;
+}
+.photo-mosaic-item.tall { grid-row: 1 / 3; }
+.photo-mosaic-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .4s ease;
+}
+.photo-mosaic-item:hover img { transform: scale(1.04); }
+
+/* ── PILLARS ── */
+.pillars { background: var(--ink); }
+.pillars .section-title { color: white; }
+.pillars .section-sub { color: rgba(255,255,255,.55); }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 52px;
+}
+.pillar-card {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px; padding: 36px 28px;
+  transition: background .25s, border-color .25s;
+}
+.pillar-card:hover { background: rgba(201,137,42,.1); border-color: rgba(201,137,42,.35); }
+.pillar-num {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 48px; font-weight: 800; color: rgba(201,137,42,.25);
+  line-height: 1; margin-bottom: 16px;
+}
+.pillar-card h3 { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 700; color: white; margin-bottom: 10px; }
+.pillar-card p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.7; }
+
+/* ── VALUES ── */
+.values { background: var(--warm); }
+.values-list { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 52px; }
+.value-item { display: flex; gap: 20px; align-items: flex-start; }
+.value-icon { font-size: 32px; flex-shrink: 0; margin-top: 2px; }
+.value-item h4 { font-family: 'Shippori Mincho', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.value-item p { font-size: 15px; color: var(--mist); line-height: 1.65; }
+
+/* ── TEAM STATS ── */
+.team { background: var(--cream); }
+.team-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.team-text p { font-size: 16px; color: var(--mist); line-height: 1.8; margin-bottom: 16px; }
+.team-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+.team-stat {
+  text-align: center; padding: 28px 20px;
+  background: var(--warm); border-radius: 12px;
+  border-top: 3px solid var(--gold);
+}
+.team-stat .n { font-family: 'Shippori Mincho', serif; font-size: 38px; font-weight: 800; color: var(--ink); }
+.team-stat .l { font-size: 12px; color: var(--mist); margin-top: 6px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .about-hero { height: 380px; }
+  .breadcrumb-bar { padding: 16px 24px; }
+  .story-layout, .team-intro { grid-template-columns: 1fr; gap: 40px; }
+  .story-photo { display: none; }
+.photo-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; }
+  .photo-mosaic-item.tall { grid-row: auto; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .values-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .photo-mosaic { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .photo-mosaic-item { height: 240px; }
+}
+</style>
+</head>
+<body>
+
+<!-- PHOTO HERO -->
+<div class="about-hero">
+  <img src="hero.jpg" alt="GYOU RAMEN restaurant" class="about-hero-img">
+  <div class="about-hero-overlay">
+    <div class="tag">Our Story</div>
+    <h1>Crafted With <span>Heart.</span></h1>
+    <p>Born in Toronto, inspired by Japan — every bowl at GYOU RAMEN tells a story simmered for hours and served with passion.</p>
+  </div>
+  <div class="breadcrumb-bar"><a href="index.html">Home</a> → About Us</div>
+</div>
+
+<main>
+
+<!-- STORY -->
+<section class="about-story">
+  <div class="container">
+    <div class="story-layout">
+      <div class="story-text">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title">A Bowl of Passion</h2>
+        <p>GYOU RAMEN was born from a simple but powerful belief: that great ramen has the power to connect people, bring comfort, and tell a story — one bowl at a time.</p>
+        <p>Proudly rooted in Toronto, we celebrate the harmony between Japanese tradition and local Canadian creativity. Our chefs honor authentic ramen-making techniques while adding a touch of modern flair, creating a dining experience that feels both comforting and exciting.</p>
+        <div class="highlight">"Good ramen connects people."</div>
+        <p>Every bowl at GYOU RAMEN tells a story — simmered for hours, seasoned to perfection, and served with genuine care. From creamy tonkotsu to light shoyu and fiery miso, we believe everyone deserves a bowl that warms both the stomach and the soul.</p>
+        <a href="menu.html" class="btn-primary" style="margin-top:8px;">Explore Our Menu</a>
+      </div>
+      <div class="story-photo">
+        <img src="food2.jpg" alt="GYOU RAMEN dishes" class="story-photo-main">
+        <div class="story-photo-badge">
+          <span class="n">🍜</span>
+          <span class="l">Made Fresh Daily</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL PHOTO MOSAIC -->
+<section class="real-photos">
+  <div class="container">
+    <span class="section-tag">In Our Restaurant</span>
+    <h2 class="section-title">Come As You Are</h2>
+    <p class="section-sub">A warm, welcoming space where every table tells a story. Grab a seat and let us take care of the rest.</p>
+    <div class="photo-mosaic">
+      <div class="photo-mosaic-item tall">
+        <img src="food1.jpg" alt="GYOU RAMEN food spread">
+      </div>
+      <div class="photo-mosaic-item">
+        <img src="food4.jpg" alt="Ramen bowl close up">
+      </div>
+      <div class="photo-mosaic-item">
+        <img src="doordash.jpg" alt="GYOU RAMEN menu spread">
+      </div>
+      <div class="photo-mosaic-item">
+        <img src="food2.jpg" alt="Table spread with ramen and sides">
+      </div>
+      <div class="photo-mosaic-item">
+        <img src="hero.jpg" alt="GYOU RAMEN hero">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="pillars">
+  <div class="container">
+    <span class="section-tag" style="color:var(--gold);">What We Stand For</span>
+    <h2 class="section-title">Built on Three Pillars</h2>
+    <p class="section-sub">Everything we do at GYOU RAMEN comes back to these three commitments.</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <h3>🍜 Authenticity</h3>
+        <p>We never cut corners on flavor. Our recipes honor Japanese ramen traditions — every broth simmered low and slow, every noodle made to spec, every topping chosen with intention.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <h3>🇨🇦 Community</h3>
+        <p>Rooted in Toronto, proud to be Canadian. We hire locally, source thoughtfully, and believe our restaurant should be a gathering place — not just a dining destination.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <h3>🤝 Hospitality</h3>
+        <p>From the moment you walk in to the last drop of broth, you deserve to feel cared for. Our team is trained not just in technique, but in genuine human warmth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="container">
+    <span class="section-tag">Our Values</span>
+    <h2 class="section-title">Guided by What Matters</h2>
+    <div class="values-list">
+      <div class="value-item">
+        <div class="value-icon">🔥</div>
+        <div>
+          <h4>Passion Over Perfection</h4>
+          <p>We obsess over flavor, not appearance. A great bowl of ramen is about soul — and we pour ours into every recipe.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🌿</div>
+        <div>
+          <h4>Fresh, Always</h4>
+          <p>No freezer shortcuts. Every ingredient — from our soft-boiled eggs to our chashu — is prepared fresh each day.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🎯</div>
+        <div>
+          <h4>Consistency You Can Count On</h4>
+          <p>Whether it's your first visit or your hundredth, your bowl should taste exactly the way you remember it. That's our standard.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">📈</div>
+        <div>
+          <h4>Growth with Purpose</h4>
+          <p>As we expand across Canada, we're committed to bringing the same heart and quality to every new community we enter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM STATS -->
+<section class="team">
+  <div class="container">
+    <div class="team-intro">
+      <div class="team-text">
+        <span class="section-tag">Our Scale</span>
+        <h2 class="section-title">A Growing Family</h2>
+        <p>What started as a single location on Yonge Street has grown into a brand with a team of over 1,500 dedicated professionals — all sharing the same mission.</p>
+        <p>Our investment in people, training, and quality systems is what makes GYOU RAMEN not just a restaurant, but a platform for growth — for our team, our franchisees, and our communities.</p>
+        <a href="franchising.html" class="btn-primary" style="margin-top:8px;">Explore Franchise Opportunities</a>
+      </div>
+      <div>
+        <div class="team-stats">
+          <div class="team-stat"><div class="n">100+</div><div class="l">Menu Items</div></div>
+          <div class="team-stat"><div class="n">1,500+</div><div class="l">Team Members</div></div>
+          <div class="team-stat"><div class="n">$5M+</div><div class="l">Investment (CAD)</div></div>
+          <div class="team-stat"><div class="n">🇨🇦</div><div class="l">Expanding Canada-wide</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="nav-footer.js"></script>
+</body>
+</html>

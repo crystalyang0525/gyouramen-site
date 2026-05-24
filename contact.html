@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – GYOU RAMEN</title>
+<meta name="description" content="Get in touch with GYOU RAMEN. Call, email, or DM us on Instagram. Located at 630 Yonge St, Toronto.">
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-main { background: var(--cream); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start; }
+
+/* Info side */
+.contact-info-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.c-card {
+  background: white; border-radius: 14px; padding: 24px;
+  display: flex; align-items: center; gap: 18px;
+  box-shadow: 0 2px 16px rgba(26,16,8,.07);
+  transition: transform .2s;
+}
+.c-card:hover { transform: translateX(4px); }
+.c-card-icon {
+  width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--red), #e74c3c);
+  display: flex; align-items: center; justify-content: center; font-size: 24px;
+}
+.c-card strong { display: block; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--mist); margin-bottom: 4px; }
+.c-card a, .c-card span { font-size: 16px; font-weight: 500; color: var(--ink); }
+.c-card a { color: var(--red); }
+
+.social-row { display: flex; gap: 12px; margin-top: 8px; }
+.social-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 10px;
+  border: 1.5px solid rgba(26,16,8,.15);
+  font-size: 13px; font-weight: 500; color: var(--ink);
+  transition: border-color .2s, color .2s;
+}
+.social-btn:hover { border-color: var(--red); color: var(--red); }
+
+.hours-block { background: var(--warm); border-radius: 16px; padding: 28px; margin-top: 24px; }
+.hours-block h4 { font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700; margin-bottom:16px; }
+.h-row { display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(26,16,8,.07); font-size:14px; }
+.h-row:last-child { border-bottom:none; }
+.h-row span:first-child { color:var(--mist); }
+.h-row span:last-child { font-weight:500; }
+.hours-holiday {
+  margin-top: 16px;
+  border: 1.5px solid rgba(201,137,42,.35);
+  background: rgba(201,137,42,.07);
+}
+.hours-holiday h4 { color: #a0701a; }
+.hours-holiday .h-row span:first-child { color: #a0701a; font-weight: 500; }
+.hours-holiday .h-row span:last-child { color: #a0701a; }
+.holiday-label {
+  font-size: 11px; font-weight: 400;
+  color: var(--mist); margin-left: 6px;
+  font-style: italic;
+}
+
+/* Form side */
+.contact-form-wrap {
+  background: var(--ink); border-radius: 20px; padding: 48px 40px;
+}
+.contact-form-wrap h3 {
+  font-family:'Shippori Mincho',serif; font-size:26px; font-weight:800;
+  color:white; margin-bottom:8px;
+}
+.contact-form-wrap p { color:rgba(255,255,255,.5); font-size:15px; margin-bottom:32px; }
+
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display:block; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+  color:rgba(255,255,255,.45); font-weight:600; margin-bottom:8px;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width:100%; padding:13px 16px;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12);
+  border-radius:8px; color:white; outline:none;
+  font-family:'DM Sans',sans-serif; font-size:15px;
+  transition:border-color .2s, background .2s;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color:rgba(255,255,255,.2); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color:var(--gold); background:rgba(255,255,255,.1);
+}
+.form-group select option { background:#1a1008; }
+.form-group textarea { resize:vertical; min-height:120px; }
+.form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-submit {
+  width:100%; padding:16px; background:var(--red); color:white;
+  border:none; border-radius:8px; font-family:'DM Sans',sans-serif;
+  font-size:14px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+  cursor:pointer; margin-top:8px; transition:background .2s, transform .15s;
+}
+.form-submit:hover { background:var(--red-deep); transform:translateY(-2px); }
+.form-success {
+  display:none; text-align:center; padding:40px 20px;
+  color:var(--gold-light); font-family:'Shippori Mincho',serif; font-size:20px;
+}
+
+@media(max-width:900px){
+  .contact-layout { grid-template-columns:1fr; }
+  .form-row-2 { grid-template-columns:1fr; }
+  .contact-form-wrap { padding:32px 24px; }
+}
+@media(max-width:600px){
+  .social-row { flex-direction: column; }
+  .social-btn { justify-content: center; }
+  .hours-block { padding: 20px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <h1>Contact Us</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> → Contact</p>
+  </div>
+</div>
+
+<main>
+<section class="contact-main">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="section-tag">Get in Touch</span>
+      <h2 class="section-title">We'd Love to Hear From You</h2>
+      <p class="section-sub" style="margin:0 auto;">Whether you have a question about our menu, want to book for a group, or are interested in franchising — we're here.</p>
+    </div>
+
+    <div class="contact-layout">
+      <!-- LEFT INFO -->
+      <div>
+        <div class="contact-info-cards">
+          <div class="c-card">
+            <div class="c-card-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:+13653149955">+1 (365) 314-9955</a>
+            </div>
+          </div>
+          <div class="c-card">
+            <div class="c-card-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:support@gyouramen.com">support@gyouramen.com</a>
+            </div>
+          </div>
+          <div class="c-card">
+            <div class="c-card-icon">📍</div>
+            <div>
+              <strong>Address</strong>
+              <span>630 Yonge St, Toronto, ON</span>
+            </div>
+          </div>
+          <div class="c-card">
+            <div class="c-card-icon">📸</div>
+            <div>
+              <strong>Instagram</strong>
+              <a href="https://instagram.com/gyouramen" target="_blank">@gyouramen</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="https://instagram.com/gyouramen" target="_blank" class="social-btn">📸 Instagram</a>
+          <a href="https://tiktok.com/@gyouramen" target="_blank" class="social-btn">🎵 TikTok</a>
+        </div>
+
+        <div class="hours-block">
+          <h4>⏰ Hours of Operation</h4>
+          <div class="h-row"><span>Monday</span><span>11:30 AM – 11:30 PM</span></div>
+          <div class="h-row"><span>Tuesday</span><span>11:30 AM – 11:30 PM</span></div>
+          <div class="h-row"><span>Wednesday</span><span>11:30 AM – 11:30 PM</span></div>
+          <div class="h-row"><span>Thursday</span><span>11:30 AM – 11:30 PM</span></div>
+          <div class="h-row"><span>Friday</span><span>11:30 AM – 11:30 PM</span></div>
+          <div class="h-row"><span>Saturday</span><span>11:30 AM – 11:30 PM</span></div>
+          <div class="h-row" style="border-bottom:none;"><span>Sunday</span><span>11:30 AM – 11:30 PM</span></div>
+        </div>
+
+        <div class="hours-block hours-holiday">
+          <h4>🎄 Holiday Hours</h4>
+          <div class="h-row"><span>December 24 <span class="holiday-label">Christmas Eve</span></span><span>11:30 AM – 9:00 PM</span></div>
+          <div class="h-row"><span>December 25 <span class="holiday-label">Christmas Day</span></span><span>11:30 AM – 9:00 PM</span></div>
+          <div class="h-row" style="border-bottom:none;"><span>December 31 <span class="holiday-label">New Year's Eve</span></span><span>11:30 AM – 9:00 PM</span></div>
+          <div style="margin-top:16px;font-size:13px;color:var(--mist);">Holiday hours may vary. We typically reply within 24 hours.</div>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM -->
+      <div class="contact-form-wrap" id="contactFormWrap">
+        <h3>Send Us a Message</h3>
+        <p>Fill out the form and we'll get back to you within 24 hours.</p>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="jane@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone (optional)</label>
+          <input type="tel" placeholder="+1 (416) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select>
+            <option>General Inquiry</option>
+            <option>Franchise Information</option>
+            <option>Group Booking / Event</option>
+            <option>Menu Question</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us how we can help..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitContact()">Send Message →</button>
+      </div>
+      <div class="form-success" id="contactSuccess">
+        🍜 Message received! We'll be in touch within 24 hours. Thank you for reaching out to GYOU RAMEN.
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script src="nav-footer.js"></script>
+<script>
+function submitContact() {
+  document.getElementById('contactFormWrap').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+}
+</script>
+</body>
+</html>
